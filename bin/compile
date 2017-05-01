@@ -59,13 +59,13 @@ pushd .
 
 step Checking stack
 if [ ! -f /etc/lsb-release ]; then
-    fail Sorry, only Ubuntu 14.04 is currently supported
+    fail Sorry, only Ubuntu 16.10 is currently supported
   fi
 . /etc/lsb-release
-if [ "$DISTRIB_RELEASE" != "14.04" ]; then
-    fail Sorry, only Ubuntu 14.04 is currently supported
+if [ "$DISTRIB_RELEASE" != "16.10" ]; then
+    fail Sorry, only Ubuntu 16.10 is currently supported
   fi
-say Ok.  Ubuntu 14.04 found
+say Ok.  Ubuntu 16.10 found
 
 step Setting environment
 BUILD_DIR=$1
@@ -132,13 +132,13 @@ grep -rl "prefix=/usr" $GREP_PATH | xargs sed -i 's|prefix=/usr|prefix=/app/.tes
 
 step install swift_ver $SWIFT_VER
     #release build
-    URL=https://swift.org/builds/$SWIFT_VER_LC/ubuntu1404/$SWIFT_VER
+    URL=https://swift.org/builds/$SWIFT_VER_LC/ubuntu1610/$SWIFT_VER
     #development build URL=https://swift.org/builds/development/ubuntu1404/$SWIFT_VER
-    fetch $SWIFT_VER-ubuntu14.04.tar.gz
-    decomp $SWIFT_VER-ubuntu14.04.tar.gz
-    untar $SWIFT_VER-ubuntu14.04.tar
-    rsync -Pa $CACHE_DIR/$SWIFT_VER-ubuntu14.04/ $CACHE_DIR/.test/ > $BUILD_DIR/build.log || fail Renaming Swift dir
-    rm -rf $CACHE_DIR/$SWIFT_VER-ubuntu14.04
+    fetch $SWIFT_VER-ubuntu16.10.tar.gz
+    decomp $SWIFT_VER-ubuntu16.10.tar.gz
+    untar $SWIFT_VER-ubuntu16.10.tar
+    rsync -Pa $CACHE_DIR/$SWIFT_VER-ubuntu16.10/ $CACHE_DIR/.test/ > $BUILD_DIR/build.log || fail Renaming Swift dir
+    rm -rf $CACHE_DIR/$SWIFT_VER-ubuntu16.10
 say Ok
 
 step Install Swift into BuildDir
